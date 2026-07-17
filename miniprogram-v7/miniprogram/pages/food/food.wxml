@@ -1,0 +1,51 @@
+<view class="page food-page">
+  <text class="eyebrow">AI 饮食交互原生版</text>
+  <view class="page-title">拍一张，确认后再保存</view>
+  <view class="page-subtitle">当前使用本地餐食模板演示识别流程，不上传图片、不消耗接口费用。</view>
+
+  <view class="photo-card card" bindtap="choosePhoto" hover-class="photo-hover">
+    <image class="meal-image" src="{{imagePath}}" mode="aspectFill" wx:if="{{imagePath}}" />
+    <view class="photo-empty" wx:else>
+      <view class="camera-mark">拍照</view>
+      <view class="photo-title">拍摄或选择餐食照片</view>
+      <view class="photo-copy">图片仅在当前页面预览，保存记录时不会保留原图</view>
+    </view>
+  </view>
+  <button class="secondary-button template-button" bindtap="useTemplate">没有照片，使用常见餐食模板</button>
+
+  <view class="analysis-state card" wx:if="{{analyzing}}">
+    <view class="loading-dot"></view>
+    <view><view class="analysis-title">正在分析餐盘</view><view class="analysis-copy">识别菜品、估算份量和营养成分</view></view>
+  </view>
+
+  <view wx:if="{{foods.length}}">
+    <view class="section">
+      <view class="section-header"><text class="section-title">估算结果</text><text class="section-meta">请核对份量</text></view>
+      <view class="macro-grid card">
+        <view><text class="macro-value">{{totals.calories}}</text><text class="macro-label">千卡</text></view>
+        <view><text class="macro-value">{{totals.protein}}</text><text class="macro-label">蛋白质 g</text></view>
+        <view><text class="macro-value">{{totals.carbs}}</text><text class="macro-label">碳水 g</text></view>
+        <view><text class="macro-value">{{totals.fat}}</text><text class="macro-label">脂肪 g</text></view>
+      </view>
+    </view>
+
+    <view class="food-card card" wx:for="{{foods}}" wx:key="id">
+      <view class="food-head">
+        <input class="food-name" value="{{item.name}}" data-index="{{index}}" bindblur="updateFoodName" maxlength="30" />
+        <text class="confidence">可信度 {{item.confidence}}%</text>
+      </view>
+      <view class="food-meta">{{item.calories}} kcal · 蛋白质 {{item.protein}}g · 脂肪 {{item.fat}}g</view>
+      <view class="food-controls">
+        <view class="portion-control"><button data-index="{{index}}" data-delta="-20" bindtap="adjustPortion">−</button><text>{{item.grams}}g</text><button data-index="{{index}}" data-delta="20" bindtap="adjustPortion">＋</button></view>
+        <picker range="{{cookingMethods}}" data-index="{{index}}" bindchange="changeCooking"><view class="cooking-picker">{{item.cookingMethod}} ›</view></picker>
+      </view>
+    </view>
+
+    <view class="meal-select card">
+      <text>保存到</text>
+      <picker range="{{mealTypes}}" value="{{mealIndex}}" bindchange="changeMeal"><view class="meal-picker">{{mealTypes[mealIndex]}} ›</view></picker>
+    </view>
+    <button class="primary-button save-button" bindtap="saveMeal">确认并保存饮食</button>
+    <view class="safe-note">照片无法可靠判断隐藏食材、食用油、糖和实际重量。所有营养值均为估算，修改份量后再保存更有参考价值。</view>
+  </view>
+</view>

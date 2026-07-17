@@ -1,0 +1,66 @@
+<view class="page">
+  <view class="hero">
+    <view>
+      <text class="eyebrow">{{dateLabel}}</text>
+      <view class="page-title">你好，{{nickname}}</view>
+      <view class="page-subtitle">今天也只做刚刚好的进步。</view>
+    </view>
+    <view class="score-ring">
+      <text class="score-number">{{score}}</text>
+      <text class="score-label">健康分</text>
+    </view>
+  </view>
+
+  <view class="coach-strip" bindtap="openCoach" hover-class="card-hover">
+    <view class="strip-mark">教练</view>
+    <view class="strip-copy">
+      <view class="strip-title">{{advice.title}}</view>
+      <view class="strip-detail">{{advice.detail}}</view>
+    </view>
+    <text class="chevron">›</text>
+  </view>
+
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">今日重点</text>
+      <text class="section-meta">{{checkedToday ? '已完成' : '待完成'}}</text>
+    </view>
+    <view class="training-card card">
+      <view class="plan-badge">{{plan.type === 'RECOVERY' ? '恢复' : plan.type}}</view>
+      <view class="training-copy">
+        <view class="training-title">{{plan.label}}</view>
+        <view class="training-meta">{{plan.activity}}</view>
+        <view class="training-note" wx:if="{{plan.type !== 'RECOVERY'}}">约 40 分钟 · 逐组记录 · 90 秒休息</view>
+        <view class="training-note" wx:else>散步、拉伸、补水，完成后点亮今日</view>
+      </view>
+      <button class="primary-button" bindtap="openPrimary">
+        {{plan.type === 'RECOVERY' ? '去完成恢复任务' : '开始今日训练'}}
+      </button>
+    </view>
+  </view>
+
+  <view class="summary-grid">
+    <view class="summary-card card" bindtap="openFood" hover-class="card-hover">
+      <text class="summary-kicker">今日饮食</text>
+      <text class="summary-value">{{meals.calories}} kcal</text>
+      <text class="summary-copy">蛋白质 {{meals.protein}}g</text>
+    </view>
+    <view class="summary-card card" bindtap="openData" hover-class="card-hover">
+      <text class="summary-kicker">昨夜睡眠</text>
+      <text class="summary-value">{{latest.sleepHours || '--'}} 小时</text>
+      <text class="summary-copy">目标 7.5 小时</text>
+    </view>
+    <view class="summary-card card" bindtap="openData" hover-class="card-hover">
+      <text class="summary-kicker">最近体重</text>
+      <text class="summary-value">{{latest.weight || '--'}} kg</text>
+      <text class="summary-copy">查看身体趋势</text>
+    </view>
+    <view class="summary-card accent-card card" bindtap="openCoach" hover-class="card-hover">
+      <text class="summary-kicker">连续打卡</text>
+      <text class="summary-value">{{streak}} 天</text>
+      <text class="summary-copy">让小进步留下痕迹</text>
+    </view>
+  </view>
+
+  <view class="safe-note">健康分和教练建议用于日常习惯参考，不替代医疗建议；出现疼痛、眩晕或明显不适时请停止训练。</view>
+</view>

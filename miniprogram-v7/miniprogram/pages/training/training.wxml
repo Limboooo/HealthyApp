@@ -1,0 +1,43 @@
+<view class="page training-page">
+  <view class="training-hero">
+    <view><text class="eyebrow">逐组跟练</text><view class="page-title">训练 {{type}}</view><view class="page-subtitle">动作稳定优先，最后保留约 2 次余力。</view></view>
+    <view class="exercise-count"><text>{{exercises.length}}</text><text>个动作</text></view>
+  </view>
+
+  <view class="exercise-card card" wx:for="{{exercises}}" wx:key="id">
+    <view class="exercise-head">
+      <view class="exercise-order">{{index + 1}}</view>
+      <view class="exercise-name-wrap"><view class="exercise-name">{{item.name}}</view><view class="exercise-target">{{item.targetSets}} 组 × {{item.targetReps}} {{item.unit || '次'}} · {{item.weight ? item.weight + 'kg' : '自重'}}</view></view>
+      <view class="set-count">{{item.sets.length}}/{{item.targetSets}}</view>
+    </view>
+    <view class="cue">动作提示：{{item.cue}}</view>
+    <view class="set-list" wx:if="{{item.sets.length}}">
+      <view class="set-pill" wx:for="{{item.sets}}" wx:for-item="set" wx:for-index="setIndex" wx:key="setIndex">
+        <text>第 {{setIndex + 1}} 组</text><text>{{set.weight ? set.weight + 'kg · ' : ''}}{{set.reps}}{{item.unit || '次'}} · RPE {{set.rpe}}</text>
+      </view>
+    </view>
+    <button class="secondary-button set-button" data-index="{{index}}" bindtap="openSetModal" disabled="{{item.sets.length >= item.targetSets}}">
+      {{item.sets.length >= item.targetSets ? '动作已完成' : '记录下一组'}}
+    </button>
+  </view>
+
+  <button class="primary-button finish-button" bindtap="finishTraining">结束并保存训练</button>
+  <view class="safe-note">锐痛、眩晕、胸闷或明显不适时立刻停止。肌肉发力和正常疲劳不等同于关节疼痛。</view>
+
+  <view class="rest-bar" wx:if="{{restActive}}">
+    <view><text class="rest-label">组间休息</text><text class="rest-time">{{restSeconds}} 秒</text></view>
+    <button class="rest-skip" bindtap="skipRest">跳过</button>
+  </view>
+
+  <view class="modal-mask" wx:if="{{modalOpen}}" catchtap="closeSetModal">
+    <view class="set-modal" catchtap="noop">
+      <view class="modal-title">记录一组</view>
+      <view class="modal-subtitle">{{exercises[activeIndex].name}}</view>
+      <view class="modal-field" wx:if="{{exercises[activeIndex].weight > 0}}"><text>每只重量（kg）</text><input type="digit" value="{{form.weight}}" data-field="weight" bindinput="onFormInput" /></view>
+      <view class="modal-field"><text>{{exercises[activeIndex].unit === '秒' ? '保持时间（秒）' : '完成次数'}}</text><input type="number" value="{{form.reps}}" data-field="reps" bindinput="onFormInput" /></view>
+      <view class="modal-field"><text>RPE 难度（1–10）</text><input type="digit" value="{{form.rpe}}" data-field="rpe" bindinput="onFormInput" /></view>
+      <view class="rpe-help">7–8：还能再做约 2–3 次；9–10：接近极限。</view>
+      <view class="modal-actions"><button class="secondary-button" bindtap="closeSetModal">取消</button><button class="primary-button" bindtap="saveSet">保存这一组</button></view>
+    </view>
+  </view>
+</view>

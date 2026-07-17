@@ -1,0 +1,34 @@
+page {
+  --color-primary: #176b51;
+  --color-primary-dark: #0f4f3b;
+  --color-primary-soft: #e5f1eb;
+  --color-surface: #ffffff;
+  --color-canvas: #f5f7f3;
+  --color-text: #19231f;
+  --color-muted: #748079;
+  --color-line: #e0e6df;
+  min-height: 100%;
+  color: var(--color-text);
+  background: var(--color-canvas);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 28rpx;
+}
+
+view, text, button, input, picker, scroll-view { box-sizing: border-box; }
+button::after { border: 0; }
+.page { min-height: 100vh; padding: 28rpx 28rpx 48rpx; }
+.eyebrow { color: var(--color-primary); font-size: 20rpx; font-weight: 700; letter-spacing: 2rpx; }
+.page-title { margin-top: 8rpx; font-size: 38rpx; font-weight: 750; line-height: 1.25; }
+.page-subtitle { margin-top: 8rpx; color: var(--color-muted); font-size: 24rpx; line-height: 1.5; }
+.section { margin-top: 28rpx; }
+.section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16rpx; }
+.section-title { font-size: 28rpx; font-weight: 700; }
+.section-meta { color: var(--color-muted); font-size: 22rpx; }
+.card { border: 1rpx solid var(--color-line); border-radius: 24rpx; background: var(--color-surface); }
+.primary-button { display: flex; height: 88rpx; align-items: center; justify-content: center; border-radius: 20rpx; color: #fff; background: var(--color-primary); font-size: 28rpx; font-weight: 700; line-height: 88rpx; }
+.secondary-button { display: flex; height: 76rpx; align-items: center; justify-content: center; border: 1rpx solid #b9d3c7; border-radius: 18rpx; color: var(--color-primary); background: #fff; font-size: 26rpx; line-height: 76rpx; }
+.danger-text { color: #a24f46; }
+.safe-note { margin-top: 20rpx; padding: 18rpx 20rpx; border-radius: 16rpx; color: #66736c; background: #edf2ee; font-size: 22rpx; line-height: 1.6; }
+.empty-state { padding: 64rpx 24rpx; text-align: center; color: var(--color-muted); }
+.empty-state-title { color: var(--color-text); font-weight: 700; }
+.empty-state-copy { margin-top: 10rpx; font-size: 24rpx; }

@@ -1,0 +1,47 @@
+<view class="page">
+  <text class="eyebrow">坚持会留下痕迹</text>
+  <view class="page-title">打卡日历</view>
+  <view class="page-subtitle">训练日完成训练自动点亮，恢复日完成三项小任务即可点亮。</view>
+
+  <view class="streak-row">
+    <view class="streak-card card"><text class="streak-value">{{currentStreak}}</text><text class="streak-label">当前连续</text></view>
+    <view class="streak-card card"><text class="streak-value">{{longestStreak}}</text><text class="streak-label">最长连续</text></view>
+    <view class="streak-card card"><text class="streak-value">{{totalDays}}</text><text class="streak-label">累计打卡</text></view>
+  </view>
+
+  <view class="calendar card">
+    <view class="calendar-head">
+      <button class="month-button" bindtap="previousMonth" aria-label="上个月">‹</button>
+      <text class="month-label">{{monthLabel}}</text>
+      <button class="month-button {{canNext ? '' : 'disabled'}}" bindtap="nextMonth" aria-label="下个月">›</button>
+    </view>
+    <view class="week-row"><text wx:for="{{weekdays}}" wx:key="*this">{{item}}</text></view>
+    <view class="calendar-grid">
+      <view class="calendar-cell {{item.blank ? 'is-blank' : ''}} {{item.checked ? 'is-checked' : ''}} {{item.today ? 'is-today' : ''}} {{item.future ? 'is-future' : ''}}" wx:for="{{cells}}" wx:key="key">
+        <text wx:if="{{!item.blank}}">{{item.day}}</text>
+        <view class="check-dot" wx:if="{{item.checked}}"></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section" wx:if="{{plan.type === 'RECOVERY' && !checkedToday}}">
+    <view class="section-header"><text class="section-title">今日恢复任务</text><text class="section-meta">全部完成后打卡</text></view>
+    <view class="task-row card {{item.done ? 'task-done' : ''}}" wx:for="{{tasks}}" wx:key="id" data-id="{{item.id}}" bindtap="toggleTask">
+      <view class="task-check">{{item.done ? '✓' : ''}}</view><text>{{item.label}}</text>
+    </view>
+  </view>
+
+  <button class="primary-button section {{checkedToday ? 'button-complete' : ''}}" bindtap="completeToday">
+    {{checkedToday ? '今天已点亮' : plan.type === 'RECOVERY' ? '完成恢复日打卡' : '去完成训练并打卡'}}
+  </button>
+
+  <view class="section">
+    <view class="section-header"><text class="section-title">成就徽章</text><text class="section-meta">{{totalDays}} 天成长中</text></view>
+    <view class="badge-grid">
+      <view class="badge card {{item.unlocked ? 'badge-unlocked' : ''}}" wx:for="{{achievements}}" wx:key="id">
+        <view class="badge-mark">{{item.unlocked ? '✓' : item.target}}</view>
+        <text class="badge-label">{{item.label}}</text>
+      </view>
+    </view>
+  </view>
+</view>

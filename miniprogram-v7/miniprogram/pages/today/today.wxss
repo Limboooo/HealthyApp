@@ -1,0 +1,23 @@
+.hero { display: flex; align-items: center; justify-content: space-between; padding: 18rpx 4rpx 10rpx; }
+.score-ring { display: flex; width: 124rpx; height: 124rpx; flex-direction: column; align-items: center; justify-content: center; border: 10rpx solid #cde2d8; border-top-color: var(--color-primary); border-radius: 50%; background: #fff; }
+.score-number { font-size: 36rpx; font-weight: 760; line-height: 1; }
+.score-label { margin-top: 8rpx; color: var(--color-muted); font-size: 18rpx; }
+.coach-strip { display: flex; align-items: center; margin-top: 24rpx; padding: 24rpx; border: 1rpx solid #c7dbd1; border-radius: 22rpx; background: #e9f3ee; }
+.strip-mark { display: flex; width: 76rpx; height: 48rpx; align-items: center; justify-content: center; border-radius: 24rpx; color: #fff; background: var(--color-primary); font-size: 20rpx; font-weight: 700; }
+.strip-copy { min-width: 0; flex: 1; margin-left: 20rpx; }
+.strip-title { font-size: 27rpx; font-weight: 700; }
+.strip-detail { display: -webkit-box; overflow: hidden; margin-top: 6rpx; color: #52645b; font-size: 22rpx; line-height: 1.45; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.chevron { margin-left: 12rpx; color: var(--color-primary); font-size: 46rpx; font-weight: 300; }
+.training-card { position: relative; overflow: hidden; padding: 30rpx; }
+.plan-badge { display: flex; width: 72rpx; height: 72rpx; align-items: center; justify-content: center; border-radius: 20rpx; color: #fff; background: var(--color-primary); font-size: 28rpx; font-weight: 800; }
+.training-copy { margin: 22rpx 0 26rpx; }
+.training-title { font-size: 34rpx; font-weight: 760; }
+.training-meta { margin-top: 8rpx; color: #4c5c54; font-size: 25rpx; }
+.training-note { margin-top: 16rpx; color: var(--color-muted); font-size: 22rpx; }
+.summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18rpx; margin-top: 28rpx; }
+.summary-card { display: flex; min-height: 190rpx; flex-direction: column; padding: 24rpx; }
+.accent-card { border-color: #b9d7c9; background: #edf6f1; }
+.summary-kicker { color: var(--color-muted); font-size: 21rpx; }
+.summary-value { margin-top: 22rpx; font-size: 31rpx; font-weight: 760; }
+.summary-copy { margin-top: auto; padding-top: 18rpx; color: var(--color-muted); font-size: 20rpx; }
+.card-hover { opacity: .82; }

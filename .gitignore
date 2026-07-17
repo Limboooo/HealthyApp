@@ -1,0 +1,11 @@
+node_modules/
+.env
+.env.*
+*.pem
+*.key
+*.zip
+.browser-profile*/
+qa-layout*.html
+preview-*.png
+miniprogram-v7/project.private.config.json
+miniprogram-v7/.miniprogram-ci/

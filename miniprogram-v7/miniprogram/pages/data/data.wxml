@@ -1,0 +1,43 @@
+<view class="page">
+  <text class="eyebrow">全部保存在当前设备</text>
+  <view class="page-title">身体与生活记录</view>
+  <view class="page-subtitle">每天更新一次即可。趋势比某一天的数字更值得关注。</view>
+
+  <view class="metrics-row">
+    <view class="metric-card card"><text class="metric-label">体重</text><text class="metric-value">{{latest.weight || '--'}}</text><text class="metric-unit">kg</text></view>
+    <view class="metric-card card"><text class="metric-label">体脂率</text><text class="metric-value">{{latest.bodyFat || '--'}}</text><text class="metric-unit">%</text></view>
+    <view class="metric-card card"><text class="metric-label">腰围</text><text class="metric-value">{{latest.waist || '--'}}</text><text class="metric-unit">cm</text></view>
+  </view>
+
+  <view class="section card trend-card">
+    <view class="section-header"><text class="section-title">最近体重</text><text class="section-meta">{{recordCount}} 条记录</text></view>
+    <view wx:if="{{weightTrend.length}}">
+      <view class="trend-row" wx:for="{{weightTrend}}" wx:key="date">
+        <text class="trend-date">{{item.date}}</text>
+        <view class="trend-track"><view class="trend-fill" style="width: {{item.width}}%;"></view></view>
+        <text class="trend-value">{{item.weight}}</text>
+      </view>
+    </view>
+    <view class="empty-state" wx:else><view class="empty-state-title">还没有体重趋势</view><view class="empty-state-copy">保存两次以上记录后会更直观。</view></view>
+  </view>
+
+  <view class="section">
+    <view class="section-header"><text class="section-title">更新今日数据</text><text class="section-meta">允许小数</text></view>
+    <view class="form-card card">
+      <view class="field-row"><view><text class="field-label">身高</text><text class="field-unit">cm</text></view><input class="field-input" type="digit" value="{{form.height}}" data-field="height" bindinput="onFieldInput" /></view>
+      <view class="field-row"><view><text class="field-label">体重</text><text class="field-unit">kg</text></view><input class="field-input" type="digit" value="{{form.weight}}" data-field="weight" bindinput="onFieldInput" /></view>
+      <view class="field-row"><view><text class="field-label">体脂率</text><text class="field-unit">%</text></view><input class="field-input" type="digit" value="{{form.bodyFat}}" data-field="bodyFat" bindinput="onFieldInput" /></view>
+      <view class="field-row"><view><text class="field-label">腰围</text><text class="field-unit">cm</text></view><input class="field-input" type="digit" value="{{form.waist}}" data-field="waist" bindinput="onFieldInput" /></view>
+      <view class="field-row"><view><text class="field-label">昨夜睡眠</text><text class="field-unit">小时</text></view><input class="field-input" type="digit" value="{{form.sleepHours}}" data-field="sleepHours" bindinput="onFieldInput" /></view>
+      <view class="field-row"><view><text class="field-label">今日蛋白质</text><text class="field-unit">g</text></view><input class="field-input" type="number" value="{{form.proteinGrams}}" data-field="proteinGrams" bindinput="onFieldInput" /></view>
+      <view class="field-row"><view><text class="field-label">今日饮水</text><text class="field-unit">ml</text></view><input class="field-input" type="number" value="{{form.waterMl}}" data-field="waterMl" bindinput="onFieldInput" /></view>
+    </view>
+    <button class="primary-button form-action" bindtap="saveRecord">保存今日数据</button>
+  </view>
+
+  <view class="section">
+    <view class="section-header"><text class="section-title">数据备份</text><text class="section-meta">换手机前操作</text></view>
+    <view class="backup-actions"><button class="secondary-button" bindtap="exportBackup">复制完整备份</button><button class="secondary-button" bindtap="restoreBackup">从剪贴板恢复</button></view>
+    <view class="safe-note">备份包含训练、饮食和身体记录等健康信息。请只保存在你信任的位置，不要发布到群聊或公共平台。</view>
+  </view>
+</view>

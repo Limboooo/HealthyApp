@@ -1,0 +1,22 @@
+.status-card { position: relative; display: flex; align-items: center; margin-top: 28rpx; padding: 30rpx; overflow: hidden; }
+.status-score { color: var(--color-primary); font-size: 72rpx; font-weight: 800; line-height: 1; }
+.status-copy { margin-left: 24rpx; }
+.status-title { font-size: 29rpx; font-weight: 750; }
+.status-meta { margin-top: 8rpx; color: var(--color-muted); font-size: 21rpx; }
+.status-bar { position: absolute; right: 0; bottom: 0; left: 0; height: 8rpx; background: #e7ece8; }
+.status-fill { height: 100%; border-radius: 0 8rpx 8rpx 0; background: var(--color-primary); }
+.advice-card { display: flex; align-items: flex-start; margin-bottom: 14rpx; padding: 24rpx; }
+.advice-tag { display: flex; width: 74rpx; height: 46rpx; flex: 0 0 auto; align-items: center; justify-content: center; border-radius: 14rpx; color: var(--color-primary); background: var(--color-primary-soft); font-size: 20rpx; font-weight: 700; }
+.advice-main { margin-left: 20rpx; }
+.advice-title { font-size: 27rpx; font-weight: 720; }
+.advice-detail { margin-top: 8rpx; color: var(--color-muted); font-size: 22rpx; line-height: 1.55; }
+.report-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14rpx; }
+.report-item { display: flex; min-height: 150rpx; flex-direction: column; justify-content: center; padding: 24rpx; }
+.report-value { font-size: 36rpx; font-weight: 780; }
+.report-label { margin-top: 10rpx; color: var(--color-muted); font-size: 21rpx; }
+.weight-strip { display: flex; justify-content: space-between; margin-top: 14rpx; padding: 24rpx; font-size: 23rpx; }
+.weight-change { color: var(--color-primary); font-weight: 650; }
+.progress-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12rpx; padding: 22rpx 24rpx; }
+.progress-name { font-size: 25rpx; font-weight: 700; }
+.progress-label { margin-top: 6rpx; color: var(--color-muted); font-size: 20rpx; }
+.progress-weight { color: var(--color-primary); font-size: 28rpx; font-weight: 760; }

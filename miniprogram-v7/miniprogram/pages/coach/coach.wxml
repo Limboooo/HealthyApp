@@ -1,0 +1,51 @@
+<view class="page">
+  <text class="eyebrow">V7 本地规则引擎</text>
+  <view class="page-title">今天怎么练，我帮你判断</view>
+  <view class="page-subtitle">综合训练、睡眠、饮食与身体记录生成建议，不额外调用收费模型。</view>
+
+  <view class="status-card card">
+    <view class="status-score">{{score}}</view>
+    <view class="status-copy">
+      <view class="status-title">{{scoreLabel}}</view>
+      <view class="status-meta">今日综合状态分 / 100</view>
+    </view>
+    <view class="status-bar"><view class="status-fill" style="width: {{score}}%;"></view></view>
+  </view>
+
+  <view class="section">
+    <view class="section-header"><text class="section-title">今日建议</text><text class="section-meta">按优先级排列</text></view>
+    <view class="advice-card card" wx:for="{{advice}}" wx:key="kind">
+      <view class="advice-tag">{{item.kind === 'recovery' ? '恢复' : item.kind === 'training' ? '训练' : item.kind === 'nutrition' ? '营养' : '补水'}}</view>
+      <view class="advice-main">
+        <view class="advice-title">{{item.title}}</view>
+        <view class="advice-detail">{{item.detail}}</view>
+      </view>
+    </view>
+  </view>
+
+  <button class="primary-button section" bindtap="openTraining">执行今天的建议</button>
+
+  <view class="section">
+    <view class="section-header"><text class="section-title">最近 7 天</text><text class="section-meta">每周自动汇总</text></view>
+    <view class="report-grid">
+      <view class="report-item card"><text class="report-value">{{report.trainingCount}}</text><text class="report-label">训练次数</text></view>
+      <view class="report-item card"><text class="report-value">{{report.trainingMinutes}}</text><text class="report-label">训练分钟</text></view>
+      <view class="report-item card"><text class="report-value">{{report.averageSleep}}</text><text class="report-label">平均睡眠</text></view>
+      <view class="report-item card"><text class="report-value">{{report.averageProtein}}</text><text class="report-label">平均蛋白质</text></view>
+    </view>
+    <view class="weight-strip card">
+      <text>最近体重 {{report.latestWeight || '--'}} kg</text>
+      <text class="weight-change">7 日变化 {{report.weightChange > 0 ? '+' : ''}}{{report.weightChange}} kg</text>
+    </view>
+  </view>
+
+  <view class="section" wx:if="{{progressItems.length}}">
+    <view class="section-header"><text class="section-title">下次重量建议</text></view>
+    <view class="progress-row card" wx:for="{{progressItems}}" wx:key="exerciseId">
+      <view><view class="progress-name">{{item.exerciseName}}</view><view class="progress-label">{{item.label}}</view></view>
+      <text class="progress-weight">{{item.weight}} kg</text>
+    </view>
+  </view>
+
+  <view class="safe-note">规则建议不会诊断疾病。连续失眠、疼痛或用药相关问题，请向医生或其他合格专业人士咨询。</view>
+</view>

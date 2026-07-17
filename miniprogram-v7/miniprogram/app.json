@@ -1,0 +1,31 @@
+{
+  "pages": [
+    "pages/today/today",
+    "pages/coach/coach",
+    "pages/checkin/checkin",
+    "pages/data/data",
+    "pages/training/training",
+    "pages/food/food"
+  ],
+  "window": {
+    "navigationBarTitleText": "我的哑铃教练",
+    "navigationBarBackgroundColor": "#f5f7f3",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f5f7f3",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#8b958f",
+    "selectedColor": "#176b51",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      { "pagePath": "pages/today/today", "text": "今日" },
+      { "pagePath": "pages/coach/coach", "text": "教练" },
+      { "pagePath": "pages/checkin/checkin", "text": "打卡" },
+      { "pagePath": "pages/data/data", "text": "数据" }
+    ]
+  },
+  "lazyCodeLoading": "requiredComponents",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,23 @@
+{
+  "description": "我的哑铃教练 V7 原生微信小程序",
+  "packOptions": {
+    "ignore": [
+      { "type": "file", "value": "package.json" }
+    ]
+  },
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true
+  },
+  "compileType": "miniprogram",
+  "appid": "touristappid",
+  "projectname": "dumbbell-coach-v7",
+  "miniprogramRoot": "miniprogram/",
+  "simulatorType": "wechat",
+  "condition": {}
+}

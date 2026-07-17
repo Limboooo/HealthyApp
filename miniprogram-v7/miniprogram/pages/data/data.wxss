@@ -1,0 +1,19 @@
+.metrics-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12rpx; margin-top: 28rpx; }
+.metric-card { display: flex; min-height: 150rpx; flex-direction: column; align-items: center; justify-content: center; }
+.metric-label { color: var(--color-muted); font-size: 19rpx; }
+.metric-value { margin-top: 10rpx; font-size: 34rpx; font-weight: 780; }
+.metric-unit { margin-top: 3rpx; color: var(--color-muted); font-size: 18rpx; }
+.trend-card { padding: 26rpx 24rpx; }
+.trend-row { display: flex; align-items: center; min-height: 52rpx; }
+.trend-date { width: 82rpx; color: var(--color-muted); font-size: 19rpx; }
+.trend-track { height: 14rpx; flex: 1; overflow: hidden; border-radius: 8rpx; background: #e8ece9; }
+.trend-fill { height: 100%; border-radius: 8rpx; background: var(--color-primary); }
+.trend-value { width: 72rpx; text-align: right; font-size: 20rpx; font-weight: 650; }
+.form-card { padding: 0 24rpx; }
+.field-row { display: flex; min-height: 96rpx; align-items: center; justify-content: space-between; border-bottom: 1rpx solid var(--color-line); }
+.field-row:last-child { border-bottom: 0; }
+.field-label { font-size: 24rpx; font-weight: 650; }
+.field-unit { margin-left: 10rpx; color: var(--color-muted); font-size: 19rpx; }
+.field-input { width: 210rpx; height: 68rpx; padding: 0 18rpx; border: 1rpx solid #d8e0db; border-radius: 14rpx; text-align: right; background: #f9faf8; font-size: 25rpx; }
+.form-action { margin-top: 16rpx; }
+.backup-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 14rpx; }
